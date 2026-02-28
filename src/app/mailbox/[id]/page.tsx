@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getMailboxByEmail, getEmails, refreshMailbox, markAsRead } from "@/app/actions";
 import { formatTime, formatTimeRemaining, copyToClipboard, cn } from "@/lib/utils";

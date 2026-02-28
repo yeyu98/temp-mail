@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // 解析邮件内容
     let parsedEmail;
     try {
-      parsedEmail = parseRawEmail(raw || "");
+      parsedEmail = await parseRawEmail(raw || "");
     } catch (error) {
       console.error("解析邮件失败:", error);
       // 使用基本信息
@@ -58,7 +58,10 @@ export async function POST(request: NextRequest) {
 
     // 检查是否已存在（通过 message-id 去重）
     if (parsedEmail.messageId && mailbox.id) {
-      const existing = await db.getEmailByMessageId(parsedEmail.messageId, mailbox.id);
+      const existing = await db.getEmailByMessageId(
+        parsedEmail.messageId,
+        mailbox.id
+      );
 
       if (existing) {
         return NextResponse.json({ success: true, message: "Email already exists" });
@@ -74,8 +77,8 @@ export async function POST(request: NextRequest) {
       fromEmail: parsedEmail.from?.address || sender,
       toEmail: recipient,
       subject: parsedEmail.subject || "",
-      plainText: parsedEmail.text || null,
-      htmlContent: parsedEmail.html || null,
+      plainText: parsedEmail.text || undefined,
+      htmlContent: parsedEmail.html || undefined,
       hasAttachment: (parsedEmail.attachments?.length || 0) > 0,
       attachmentCount: parsedEmail.attachments?.length || 0,
       sentAt: parsedEmail.date || new Date(),

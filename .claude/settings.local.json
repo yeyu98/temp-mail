@@ -4,7 +4,8 @@
       "Bash(pnpm db:push:*)",
       "Bash(pnpm dev:*)",
       "Bash(pnpm:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "WebSearch"
     ]
   }
 }

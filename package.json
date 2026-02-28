@@ -21,8 +21,8 @@
     "clsx": "^2.1.0",
     "date-fns": "^4.0.0",
     "drizzle-orm": "^0.45.1",
-    "emailjs-mime-parser": "^2.0.0",
     "lucide-react": "^0.344.0",
+    "mailparser": "^3.9.3",
     "nanoid": "^5.0.0",
     "next": "^15.0.0",
     "postgres": "^3.4.8",
@@ -32,6 +32,7 @@
     "zod": "^3.0.0"
   },
   "devDependencies": {
+    "@types/mailparser": "^3.4.6",
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
