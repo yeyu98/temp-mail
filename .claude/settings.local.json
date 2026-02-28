@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm db:push:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
