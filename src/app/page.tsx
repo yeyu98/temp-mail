@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
 import { createMailbox } from "./actions";
 import { copyToClipboard, formatTimeRemaining, cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
@@ -241,7 +240,7 @@ export default function HomePage() {
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center text-xs font-bold">
                     1
                   </span>
-                  <span>点击"创建邮箱"按钮生成随机邮箱地址</span>
+                  <span>点击&ldquo;创建邮箱&rdquo;按钮生成随机邮箱地址</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center text-xs font-bold">
