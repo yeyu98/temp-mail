@@ -67,9 +67,6 @@ export function EmailDialog({ email, open, onClose }: EmailDialogProps) {
                 <div
                   dangerouslySetInnerHTML={{ __html: email.htmlContent }}
                   className="email-content"
-                  style={{
-                    img: { maxWidth: '100%', height: 'auto' },
-                  }}
                 />
               ) : email.plainText ? (
                 <pre className="whitespace-pre-wrap font-sans text-sm">
