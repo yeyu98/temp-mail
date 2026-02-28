@@ -1,10 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Send, CheckCircle } from "lucide-react";
+
+interface TestEmailResult {
+  id: number;
+  publicId: string;
+  subject: string;
+  fromEmail: string;
+}
 
 export default function TestPage() {
   const [mailboxEmail, setMailboxEmail] = useState("");
@@ -15,7 +23,7 @@ export default function TestPage() {
   const [result, setResult] = useState<{
     success: boolean;
     message: string;
-    email?: any;
+    email?: TestEmailResult;
   } | null>(null);
 
   const handleSendTestEmail = async () => {
@@ -170,12 +178,12 @@ export default function TestPage() {
                       {result.email && (
                         <div className="mt-2 text-sm text-green-700 dark:text-green-300">
                           <p>邮件已创建，可以到邮箱页面查看</p>
-                          <a
+                          <Link
                             href="/"
                             className="text-blue-600 hover:underline mt-2 inline-block"
                           >
                             返回首页
-                          </a>
+                          </Link>
                         </div>
                       )}
                     </div>
@@ -194,9 +202,9 @@ export default function TestPage() {
               <ol className="space-y-2 text-sm text-gray-600 dark:text-gray-400 list-decimal list-inside">
                 <li>访问首页创建一个临时邮箱</li>
                 <li>复制生成的邮箱地址</li>
-                <li>粘贴到上方的"目标邮箱地址"输入框</li>
-                <li>点击"发送测试邮件"按钮</li>
-                <li>返回首页点击"查看邮件"查看接收到的邮件</li>
+                <li>粘贴到上方的&ldquo;目标邮箱地址&rdquo;输入框</li>
+                <li>点击&ldquo;发送测试邮件&rdquo;按钮</li>
+                <li>返回首页点击&ldquo;查看邮件&rdquo;查看接收到的邮件</li>
               </ol>
             </CardContent>
           </Card>

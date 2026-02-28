@@ -1,4 +1,4 @@
-import { simpleParser, AddressObject } from 'mailparser';
+import { simpleParser } from 'mailparser';
 import { z } from 'zod';
 
 // 类型定义

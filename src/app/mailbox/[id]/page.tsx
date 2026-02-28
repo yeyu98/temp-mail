@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getMailboxByEmail, getEmails, refreshMailbox, markAsRead } from "@/app/actions";
 import { formatTime, formatTimeRemaining, copyToClipboard, cn } from "@/lib/utils";
-import { Mail, RefreshCw, ArrowLeft, Copy, Clock, Inbox, Trash2, ExternalLink } from "lucide-react";
+import { Mail, RefreshCw, ArrowLeft, Copy, Clock, Inbox, ExternalLink } from "lucide-react";
 import { EmailDialog } from "@/components/email-dialog";
 import type { Mailbox, Email } from "@/types";
 
@@ -27,7 +27,7 @@ export default function MailboxPage() {
   const [autoRefresh, setAutoRefresh] = useState(true);
 
   // 加载邮箱和邮件
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setIsLoading(true);
     const mailboxResult = await getMailboxByEmail(emailAddress);
 
@@ -44,7 +44,7 @@ export default function MailboxPage() {
     }
 
     setIsLoading(false);
-  };
+  }, [emailAddress, router]);
 
   // 刷新邮箱
   const handleRefresh = async () => {
@@ -85,7 +85,7 @@ export default function MailboxPage() {
   // 初始加载
   useEffect(() => {
     loadData();
-  }, [emailAddress]);
+  }, [loadData]);
 
   // 自动刷新（每 10 秒）
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function MailboxPage() {
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [emailAddress, autoRefresh]);
+  }, [autoRefresh, loadData]);
 
   if (isLoading) {
     return (

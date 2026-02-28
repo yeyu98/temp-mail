@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     }
 
     // 查找邮箱
-    let mailbox = await db.getMailboxByEmail(mailboxEmail);
+    const mailbox = await db.getMailboxByEmail(mailboxEmail);
 
     if (!mailbox) {
       return NextResponse.json({ error: "Mailbox not found" }, { status: 404 });

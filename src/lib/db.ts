@@ -1,5 +1,5 @@
 import { db } from '@/db';
-import { mailboxes, emails, attachments } from '@/db/schema';
+import { mailboxes, emails } from '@/db/schema';
 import { desc, eq, and, sql } from 'drizzle-orm';
 
 // 数据库查询封装
